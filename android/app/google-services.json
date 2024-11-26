@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "254179512768",
+    "project_id": "tryswitchlink",
+    "storage_bucket": "tryswitchlink.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254179512768:android:73af6c9247e904cc43f825",
+        "android_client_info": {
+          "package_name": "com.notifee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAesq6X5P1atAcSs0qP_eV1p5pcHZJEnyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254179512768:android:52dcaac6cb7794c643f825",
+        "android_client_info": {
+          "package_name": "com.tryswitch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAesq6X5P1atAcSs0qP_eV1p5pcHZJEnyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

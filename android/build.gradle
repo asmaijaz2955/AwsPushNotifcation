@@ -10,11 +10,19 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+    //    maven { url 'https://sdk.amazonaws.com/maven' }  
     }
     dependencies {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath 'com.google.gms:google-services:4.4.2'
+    }
+}
+allprojects {
+    repositories {
+        google()  // Add this if not already present
+        mavenCentral()
     }
 }
 
