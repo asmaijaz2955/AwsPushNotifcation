@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import AWS from 'aws-sdk'; // AWS SDK import
+import AWS from 'aws-sdk'; 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import messaging from '@react-native-firebase/messaging'; // FCM for React Native
-import firebase from '@react-native-firebase/app'; // Firebase initialization
+import messaging from '@react-native-firebase/messaging';
+import firebase from '@react-native-firebase/app'; 
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -14,21 +14,21 @@ const App = () => {
 
   const [fcmToken, setFcmToken] = useState(null);
 
-  // Initialize Firebase (only if not already initialized)
+
   useEffect(() => {
     if (!firebase.apps.length) {
-      firebase.initializeApp(); // Firebase initialization
+      firebase.initializeApp(); 
       console.log('Firebase Initialized');
     } else {
-      firebase.app(); // If already initialized, use that one
+      firebase.app(); 
     }
   }, []);
 
-  // Request permission for notifications and get FCM token
+  
   useEffect(() => {
     const getFcmToken = async () => {
       try {
-        // Request permission for iOS devices
+      
         const authStatus = await messaging().requestPermission();
         const enabled =
           authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -36,7 +36,7 @@ const App = () => {
 
         if (enabled) {
           console.log('Notification permission granted');
-          const token = await messaging().getToken(); // Get the FCM token
+          const token = await messaging().getToken(); 
           if (token) {
             setFcmToken(token);
             console.log('FCM Token:', token);
@@ -54,14 +54,14 @@ const App = () => {
     getFcmToken();
   }, []);
 
-  // Initialize the SNS client with AWS SDK
+
   const sns = new AWS.SNS({
-    region: 'us-east-1', // Your AWS region
-    accessKeyId: 'AKIAYRH5M2XR7XAGCW72', // AWS Access Key
-    secretAccessKey: 'cPkt46Io5Wmguivq5oR8WrUyB0ax6qswjjkdKgl+', // AWS Secret Access Key
+    region: 'us-east-1', 
+    accessKeyId: 'AKIAYRH5M2XR7XAGCW72', 
+    secretAccessKey: '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', 
   });
 
-  // Function to send push notification via AWS SNS
+
   const sendPushNotification = async () => {
     try {
       if (!fcmToken) {
@@ -96,15 +96,15 @@ const App = () => {
 
   useEffect(() => {
     if (fcmToken) {
-      sendPushNotification(); // Send notification when token is available
+      sendPushNotification(); 
     }
   }, [fcmToken]);
 
-  // Foreground notifications handling
+  
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('Foreground message:', remoteMessage);
-      // Handle the incoming message here
+ 
     });
 
     return unsubscribe;
